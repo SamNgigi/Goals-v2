@@ -27,13 +27,11 @@ import { Goal } from "./Goal";
   Below we have the normal ES6 class that allows us to define the logic for our component. We then import this to the main app module typeScript file so that it can be usable app wide. 
 */
 export class AppComponent {
-  title = 'the dopest app, by the most dopest developer in the the world.';
-  today = 'Angular Content';
-  // We initialize our goals as string array type.
-  goals: string[];
-
-  constructor() {
-    // We instantiate our goals array with items within it.
-    this.goals = ["Finish this weeks content", "Go through Angular documentation", "Practice practice practice"];
-  }
+  // Our goals the instances.
+  goals = [
+    new Goal(1, "Identify of skills I want to master."),
+    new Goal(2, "Mastery of skills."),
+    new Goal(3, "Application of skills."),
+    new Goal(4, "World domination."),
+  ]
 }
