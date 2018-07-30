@@ -20,13 +20,29 @@ export class GoalsComponent implements OnInit {
     new Goal(2, "Mastery of skills.", "Not yet there."),
     new Goal(3, "Application of skills.", "I'll be applying while still getting better."),
     new Goal(4, "World domination.", "One day at a time."),
+    new Goal(5, "Test", "This is just testing Event Emitting and Output binding."),
   ]
+
+  /* 
+    The completeGoal function. Note that it receives the isComplete which is an instance of the EventEmitter class.
+  */
+  completeGoal(isComplete, index) {
+    // If true
+    if (isComplete) {
+      // Remove the item with this index from the goal array.
+      this.goals.splice(index, 1)
+    }
+  }
 
 
   // The toggleDetails function.
 
   toggleDetails(index) {
+    /* 
+      Cont from goal.component.html
 
+      Here then we are actually toggling between checking if it is true that it is false to is it false that it is false.
+    */
     this.goals[index].showDescription = !this.goals[index].showDescription;
   }
 

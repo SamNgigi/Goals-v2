@@ -55,8 +55,22 @@
       If it is false. It is not displayed.
 
       More info in goal.component.ts.
+
+      For Output property binding and Event emission from child
+      component to parent component, we need to add the (isComplete)
+      = "completeGoal($event, i)"
+
+      Remember here that isComplete is an instance of the
+      EventEmitter class.
+
+      Here we capture the event being transmitted using the ()
+      parenthesis.
+
+      When we receive this event we call the completeGoal function and pass in the special $event variable. This variable is a placeholder for values that are emitted with the event. In this case a boolean. 
+
+      We can now define the completeGoal function in the goal.component.ts that will execute once it receives the boolean emitted from the child element.
     -->
-    <app-goal-details *ngIf="goal.showDescription" [goal]="goal"></app-goal-details>
+    <app-goal-details *ngIf="goal.showDescription" [goal]="goal" (isComplete)="completeGoal($event, i)"></app-goal-details>
   </div>
 </ul>
 
