@@ -2,8 +2,6 @@
   Imports allow us to import stuff from angular or other components or libraries
 */
 import { Component } from '@angular/core';
-// We import the Goal class from Goal.ts
-import { Goal } from "./Goal";
 
 /* 
   Below we have an @Component annotation. This allows us to add
@@ -27,11 +25,5 @@ import { Goal } from "./Goal";
   Below we have the normal ES6 class that allows us to define the logic for our component. We then import this to the main app module typeScript file so that it can be usable app wide. 
 */
 export class AppComponent {
-  // Our goals the instances.
-  goals = [
-    new Goal(1, "Identify of skills I want to master."),
-    new Goal(2, "Mastery of skills."),
-    new Goal(3, "Application of skills."),
-    new Goal(4, "World domination."),
-  ]
+
 }
