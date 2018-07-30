@@ -16,10 +16,10 @@ export class GoalsComponent implements OnInit {
     goals array.
   */
   goals = [
-    new Goal(1, "Identify of skills I want to master."),
-    new Goal(2, "Mastery of skills."),
-    new Goal(3, "Application of skills."),
-    new Goal(4, "World domination."),
+    new Goal(1, "Identify of skills I want to master.", "Well for now its music, math and programming."),
+    new Goal(2, "Mastery of skills.", "Not yet there."),
+    new Goal(3, "Application of skills.", "I'll be applying while still getting better."),
+    new Goal(4, "World domination.", "One day at a time."),
   ]
 
   /* 

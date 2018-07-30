@@ -12,7 +12,18 @@
     Here we have a directive that is meant to loop through the list of goals array and assign each a temporary variable called goal.
     We then display each goal variable as a list element.
   -->
-  <li *ngFor='let goal of goals'>{{goal.id}}. {{goal.name}}</li>
+  <div *ngFor='let goal of goals'>
+    <li>{{goal.id}}. {{goal.name}}</li>
+    <!--
+      Below we add the app-goal-details selector that will be 
+      responsible for  displaying the details of our goals.
+
+      We then pass in the goal to be displayed using the 
+        `[goal]=goal`
+      syntax.
+    -->
+    <app-goal-details [goal]="goal"></app-goal-details>
+  </div>
 </ul>
 
 <!-- 

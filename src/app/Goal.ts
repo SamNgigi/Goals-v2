@@ -5,7 +5,7 @@ export class Goal {
 
     In this case public means that the specified properties are visible anywhere outside the class.
   */
-  constructor(public id: number, public name: string) {
+  constructor(public id: number, public name: string, public description: string) {
     // This will be defined where we will import this class definition.
   }
 }
