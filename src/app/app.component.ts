@@ -25,5 +25,5 @@ import { Component } from '@angular/core';
   Below we have the normal ES6 class that allows us to define the logic for our component. We then import this to the main app module typeScript file so that it can be usable app wide. 
 */
 export class AppComponent {
-
+  // Defining the methods and attributes that will be associated with the AppComponent.
 }

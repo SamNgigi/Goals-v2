@@ -22,9 +22,27 @@ export class GoalsComponent implements OnInit {
     new Goal(4, "World domination."),
   ]
 
-  constructor() { }
+  /* 
+    A constructor is a special method which is used in the defining of new objects(classes). It is used to define the blueprint that instantiates object instances. 
 
+    The constructor is run before the ngOnInit is run.
+  */
+
+  constructor() {
+    console.log("We are at the constructor.");
+  }
+
+  /* 
+    ngOnInit is a life cycle hook function that is called
+    immediately after a component is created. In fact it is used to
+    indicate that a component has been completely initialized/created.
+
+    It is called by Angular itself.
+
+    So you can literally  take it to mean on initialization of a Angular component.
+    */
   ngOnInit() {
+    console.log("We are at the ngOnInit stage.");
   }
 
 }
