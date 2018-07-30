@@ -25,7 +25,7 @@
     list item in the loop.
   -->
   <div *ngFor='let goal of goals; let i = index'>
-    <li>{{goal.id}}. {{goal.name}}</li>
+    <li id="{{i}}" appStrikeThrough>{{goal.id}}. {{goal.name}}</li>
 
     <!--
       Below we create a button where by if we click it we want it
