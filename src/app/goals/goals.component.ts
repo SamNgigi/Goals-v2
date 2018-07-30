@@ -22,6 +22,15 @@ export class GoalsComponent implements OnInit {
     new Goal(4, "World domination.", "One day at a time."),
   ]
 
+
+  // The toggleDetails function.
+
+  toggleDetails(index) {
+
+    this.goals[index].showDescription = !this.goals[index].showDescription;
+  }
+
+
   /* 
     A constructor is a special method which is used in the defining of new objects(classes). It is used to define the blueprint that instantiates object instances. 
 

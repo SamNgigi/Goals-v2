@@ -11,9 +11,22 @@
 
     Here we have a directive that is meant to loop through the list of goals array and assign each a temporary variable called goal.
     We then display each goal variable as a list element.
+
+    The attribute i = index registers the position index of each
+    list item in the loop.
   -->
-  <div *ngFor='let goal of goals'>
+  <div *ngFor='let goal of goals; let i = index'>
     <li>{{goal.id}}. {{goal.name}}</li>
+
+    <!--
+      Below we create a button where by if we click it we want it
+      to trigger the toggleDetails function that will take in the
+      index of the particular goal.
+
+      This is an example of Output Property binding. Where by our output is a clicked bound to the toggleDetail function.
+    -->
+    <button (click)="toggleDetails(i)">Toggle Details</button>
+
     <!--
       Below we add the app-goal-details selector that will be 
       responsible for  displaying the details of our goals.
@@ -21,8 +34,29 @@
       We then pass in the goal to be displayed using the 
         `[goal]=goal`
       syntax.
+
+      Here we are working with Angular's Input property capabilities
+      where can pass data to child components from our views.
+
+      In this case we have the `goal` that we pass from the main
+      goal component to the goal-details component.
+
+      This is made possible through the @Input decorator that we use in the goal-details component. Connecting the child with the parent.
+
+
+      To make the Output binding property work we have to add the
+      *ngIf directive to our child component that check the boolean
+      state of the goal showDescription property.
+
+      Cont..from Goals.ts
+
+      This leads me to believe that the actual default of showDescription is true. Such that if goal.showDescription is true the description is displayed.
+
+      If it is false. It is not displayed.
+
+      More info in goal.component.ts.
     -->
-    <app-goal-details [goal]="goal"></app-goal-details>
+    <app-goal-details *ngIf="goal.showDescription" [goal]="goal"></app-goal-details>
   </div>
 </ul>
 
