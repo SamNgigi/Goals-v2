@@ -25,7 +25,14 @@
     list item in the loop.
   -->
   <div *ngFor='let goal of goals; let i = index'>
-    <li id="{{i}}" appStrikeThrough>{{goal.id}}. {{goal.name}} - Due {{goal.completeDate}}</li>
+    <!-- 
+      Below we add the | date pipe that transforms the date object to
+      a simple month, day/date and year format.
+      
+      We can also chain pipes. In this case we chain the completeDate
+      property with the uppercase pipe.
+    -->
+    <li id="{{i}}" appStrikeThrough>{{goal.id}}. {{goal.name}} - Due {{goal.completeDate | date | uppercase}}</li>
 
     <!--
       Below we create a button where by if we click it we want it
