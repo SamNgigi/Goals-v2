@@ -1,7 +1,8 @@
 <h1>My Goals</h1>
-<p>Finish {{today}} by Wednesday.</p>
+<hr>
 
-<ul>
+<div class="container">
+
   <!-- 
     
     A DIRECTIVE is a class that changes either the appearance and the behaviour of html element or changes the structure of
@@ -24,26 +25,28 @@
     The attribute i = index registers the position index of each
     list item in the loop.
   -->
-  <div *ngFor='let goal of goals; let i = index'>
-    <!-- 
+  <div class="row" *ngFor='let goal of goals; let i = index'>
+    <div class="row">
+      <!-- 
       Below we add the | date pipe that transforms the date object to
       a simple month, day/date and year format.
       
       We can also chain pipes. In this case we chain the completeDate
       property with the uppercase pipe.
     -->
-    <li id="{{i}}" appStrikeThrough>{{goal.id}}. {{goal.name}} - Due {{goal.completeDate | date | uppercase}}</li>
+      <h4 id="{{i}}" appStrikeThrough>{{goal.id}}. {{goal.name}} - Due {{goal.completeDate | date | uppercase}}</h4>
 
-    <!--
+      <!--
       Below we create a button where by if we click it we want it
       to trigger the toggleDetails function that will take in the
       index of the particular goal.
 
       This is an example of Output Property binding. Where by our output is a clicked bound to the toggleDetail function.
     -->
-    <button (click)="toggleDetails(i)">Toggle Details</button>
-
-    <!--
+      <button class="btn btn-primary" (click)="toggleDetails(i)">Toggle Details</button>
+    </div>
+    <div class="row" *ngIf="goal.showDescription">
+      <!--
       Below we add the app-goal-details selector that will be 
       responsible for  displaying the details of our goals.
 
@@ -88,9 +91,10 @@
 
       Below we replaced the completeGoal with deleteGoal.
     -->
-    <app-goal-details *ngIf="goal.showDescription" [goal]="goal" (isComplete)="deleteGoal($event, i)"></app-goal-details>
+      <app-goal-details [goal]="goal" (isComplete)="deleteGoal($event, i)"></app-goal-details>
+    </div>
   </div>
-</ul>
+</div>
 
 <!-- 
   Another structural directive is the *ngIf that adds some
