@@ -9,7 +9,7 @@ export class Goal {
 
   public showDescription: boolean;
 
-  constructor(public id: number, public name: string, public description: string) {
+  constructor(public id: number, public name: string, public description: string, public completeDate: Date) {
     /* 
       You could be asking yourself why the description is not
       showing from the beginning yet the showDescription by default
