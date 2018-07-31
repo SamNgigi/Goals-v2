@@ -18,7 +18,7 @@ export class GoalsComponent implements OnInit {
     Note that the date object created with months starting from 0. i.e January = 0, December = 11 
   */
   goals = [
-    new Goal(1, "Identify of skills I want to master.", "Well for now its music, math and programming.", new Date(2018, 6, 31)),
+    new Goal(1, "Identify skills to be mastered.", "Well for now its music, math and programming.", new Date(2018, 6, 31)),
     new Goal(2, "Mastery of skills.", "Not yet but getting there.", new Date(2018, 8, 8)),
     new Goal(3, "Application of skills.", "I'll be applying while still getting better.", new Date(2018, 8, 15)),
     new Goal(4, "World domination.", "One day at a time.", new Date(2018, 9, 14)),
@@ -33,8 +33,12 @@ export class GoalsComponent implements OnInit {
   deleteGoal(isComplete, index) {
     // If true
     if (isComplete) {
-      // Remove the item with this index from the goal array.
-      this.goals.splice(index, 1)
+      let confirmDelete = confirm(`Are you sure you want to delete ${this.goals[index].name} goal.`)
+
+      if (confirmDelete) {
+        // Remove the item with this index from the goal array.
+        this.goals.splice(index, 1)
+      }
     }
   }
 
