@@ -21,6 +21,7 @@ import { GoalFormComponent } from './goal-form/goal-form.component';
   ],
   imports: [
     BrowserModule,
+    // We add the Form module to the import array.
     FormsModule
   ],
   providers: [],

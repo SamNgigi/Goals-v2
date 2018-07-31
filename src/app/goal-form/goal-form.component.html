@@ -1,9 +1,28 @@
 <div class="container">
   <div class="row">
-    <form action="">
+    <!-- 
+      We add a template reference variable goalForm and equate it to ngForm.
+
+      This will provide the form element with additional features and monitor the changes and validity of the input elements.
+    -->
+    <form #goalForm="ngForm">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required="required">
+        <label for="goal">Goal</label>
+        <!-- 
+          To our goal input tag we add the [(ngModel)] and we equate
+          it to the goal attribute of newGoal object we created in
+          the goal-form component class.
+          
+          Note that here the i have replaced name with goal. This
+          also alters the Goal class attribute. So i would also have
+          to change it in Goal.ts from name to goal.
+
+          We then define a name attribute which is a requirement when
+          using [(ngModel)] and a form.
+        -->
+        <input type="text" class="form-control" id="goal" required="required" [(ngModel)]="newGoal.goal" name="goal">
+        <!-- Test to see if we the two way data binding is working -->
+        Should display live input here: {{newGoal.goal}}
       </div>
       <div class="form-group">
         <label for="description">Description</label>
