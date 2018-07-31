@@ -18,7 +18,7 @@ export class GoalsComponent implements OnInit {
     Note that the date object created with months starting from 0. i.e January = 0, December = 11 
   */
   goals = [
-    new Goal(1, "Identify of skills I want to master.", "Well for now its music, math and programming.", new Date(2018, 7, 7)),
+    new Goal(1, "Identify of skills I want to master.", "Well for now its music, math and programming.", new Date(2018, 6, 31)),
     new Goal(2, "Mastery of skills.", "Not yet but getting there.", new Date(2018, 8, 8)),
     new Goal(3, "Application of skills.", "I'll be applying while still getting better.", new Date(2018, 8, 15)),
     new Goal(4, "World domination.", "One day at a time.", new Date(2018, 9, 14)),
