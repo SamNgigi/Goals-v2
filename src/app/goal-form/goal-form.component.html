@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <div class="row">
     <!-- 
       We add a template reference variable goalForm and equate it to ngForm.
@@ -7,6 +7,7 @@
     -->
     <form #goalForm="ngForm">
       <div class="form-group">
+        <!-- Goal form -->
         <label for="goal">Goal</label>
         <!-- 
           To our goal input tag we add the [(ngModel)] and we equate
@@ -19,19 +20,50 @@
 
           We then define a name attribute which is a requirement when
           using [(ngModel)] and a form.
+
+          We add the template reference variable #name to access the input box's Angular control from withing the template.
         -->
-        <input type="text" class="form-control" id="goal" required="required" [(ngModel)]="newGoal.goal" name="goal">
-        <!-- Test to see if we the two way data binding is working -->
+        <input type="text" class="form-control" id="goal" required="required" [(ngModel)]="newGoal.goal" name="goal" #goal="ngModel">
+        <!-- 
+          Test to see if we the two way data binding is working
+
+          Should display live input here: {{newGoal.goal}}
+
+          Below we create a div element with the template attribute
+          hidden. This will display an alert message if the input is
+          invalid.
+
+          We then equate it to only be true if the name input is
+          valid.
+
+          The pristine property allows us not to show the message
+          when the page is loaded. 
+        -->
         Should display live input here: {{newGoal.goal}}
+        <div [hidden]="goal.valid || goal.pristine" class="alert alert-danger">
+          <p>Name is required</p>
+        </div>
       </div>
       <div class="form-group">
+        <!-- Description form -->
         <label for="description">Description</label>
-        <textarea id="description" cols="30" rows="4" class="form-control" required="required"></textarea>
+        <textarea id="description" cols="30" rows="4" class="form-control" required="required" [(ngModel)]="newGoal.description"
+          name="description" #description="ngModel"></textarea>
+        Should display live input here: {{newGoal.description}}
+        <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+          <p>Description is required</p>
+        </div>
       </div>
       <div class="form-group">
+        <!-- Date form -->
         <label for="complete">Completion</label>
-        <input type="date" class="form-control" id="completeBy" required="required">
+        <input type="date" class="form-control" id="completeDate" required="required" [(ngModel)]="newGoal.completeDate" name="completeDate"
+          #completeDate="ngModel"> Should display live input here: {{newGoal.completeDate}}
+        <div [hidden]="completeDate.valid || completeDate.pristine" class="alert alert-danger">
+          <p>Complete date is required</p>
+        </div>
       </div>
+      <button type="submit" class="btn btn-success btn-block">Add Goal</button>
     </form>
   </div>
 </div>

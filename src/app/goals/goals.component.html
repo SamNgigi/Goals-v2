@@ -31,7 +31,7 @@
     The attribute i = index registers the position index of each
     list item in the loop.
   -->
-  <div class="row" *ngFor='let goal of goals; let i = index'>
+  <div class="row mb-3" *ngFor='let goal of goals; let i = index'>
     <div class="row">
       <!-- 
       Below we add the | date pipe that transforms the date object to
@@ -49,7 +49,7 @@
 
       This is an example of Output Property binding. Where by our output is a clicked bound to the toggleDetail function.
     -->
-      <button class="btn btn-primary" (click)="toggleDetails(i)">Toggle Details</button>
+      <button class="btn btn-primary ml-3" (click)="toggleDetails(i)">Toggle Details</button>
     </div>
     <div class="row" *ngIf="goal.showDescription">
       <!--
