@@ -85,8 +85,10 @@
       When we receive this event we call the completeGoal function and pass in the special $event variable. This variable is a placeholder for values that are emitted with the event. In this case a boolean. 
 
       We can now define the completeGoal function in the goal.component.ts that will execute once it receives the boolean emitted from the child element.
+
+      Below we replaced the completeGoal with deleteGoal.
     -->
-    <app-goal-details *ngIf="goal.showDescription" [goal]="goal" (isComplete)="completeGoal($event, i)"></app-goal-details>
+    <app-goal-details *ngIf="goal.showDescription" [goal]="goal" (isComplete)="deleteGoal($event, i)"></app-goal-details>
   </div>
 </ul>
 

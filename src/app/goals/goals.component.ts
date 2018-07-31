@@ -27,8 +27,10 @@ export class GoalsComponent implements OnInit {
 
   /* 
     The completeGoal function. Note that it receives the isComplete which is an instance of the EventEmitter class.
+
+    Below we replaced completeGoal with deleteGoal.
   */
-  completeGoal(isComplete, index) {
+  deleteGoal(isComplete, index) {
     // If true
     if (isComplete) {
       // Remove the item with this index from the goal array.

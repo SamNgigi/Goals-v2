@@ -36,9 +36,11 @@ export class GoalDetailsComponent implements OnInit {
     Inside it we call the emit method on the isComplete EventEmitter object. This passes this event to the parent. 
 
     We see that the emit method takes in the complete boolean as an arg.
+
+    Below we replace the goalComplete function with goalDelete.
   */
 
-  goalComplete(complete: boolean) {
+  goalDelete(complete: boolean) {
     this.isComplete.emit(complete);
   }
 
