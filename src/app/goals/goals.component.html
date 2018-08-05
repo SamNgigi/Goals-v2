@@ -56,8 +56,9 @@
     -->
       <button class="btn btn-primary ml-3" (click)="toggleDetails(i)">Toggle Details</button>
     </div>
-    <div class="row" *ngIf="goal.showDescription">
-      <!--
+    <div class="container-fluid">
+      <div class="row" *ngIf="goal.showDescription">
+        <!--
       Below we add the app-goal-details selector that will be 
       responsible for  displaying the details of our goals.
 
@@ -102,7 +103,8 @@
 
       Below we replaced the completeGoal with deleteGoal.
     -->
-      <app-goal-details [goal]="goal" (isComplete)="deleteGoal($event, i)"></app-goal-details>
+        <app-goal-details [goal]="goal" (isComplete)="deleteGoal($event, i)"></app-goal-details>
+      </div>
     </div>
   </div>
 </div>
