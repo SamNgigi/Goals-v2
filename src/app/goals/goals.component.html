@@ -54,11 +54,10 @@
 
       This is an example of Output Property binding. Where by our output is a clicked bound to the toggleDetail function.
     -->
-      <button class="btn btn-primary ml-3" (click)="toggleDetails(i)">Toggle Details</button>
+      <button class="btn btn-info ml-3" (click)="toggleDetails(i)">Toggle Details</button>
     </div>
-    <div class="container-fluid">
-      <div class="row" *ngIf="goal.showDescription">
-        <!--
+    <div class="row" *ngIf="goal.showDescription">
+      <!--
       Below we add the app-goal-details selector that will be 
       responsible for  displaying the details of our goals.
 
@@ -103,8 +102,7 @@
 
       Below we replaced the completeGoal with deleteGoal.
     -->
-        <app-goal-details [goal]="goal" (isComplete)="deleteGoal($event, i)"></app-goal-details>
-      </div>
+      <app-goal-details [goal]="goal" (isComplete)="deleteGoal($event, i)"></app-goal-details>
     </div>
   </div>
 </div>
