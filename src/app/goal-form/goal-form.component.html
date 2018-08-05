@@ -4,8 +4,10 @@
       We add a template reference variable goalForm and equate it to ngForm.
 
       This will provide the form element with additional features and monitor the changes and validity of the input elements.
+
+      For submitting the form we create the ngSubmit event attribute that call the submitGoal function.
     -->
-    <form #goalForm="ngForm">
+    <form #goalForm="ngForm" (ngSubmit)="submitGoal()">
       <div class="form-group">
         <!-- Goal form -->
         <label for="goal">Goal</label>
@@ -49,7 +51,9 @@
         <label for="description">Description</label>
         <textarea id="description" cols="30" rows="4" class="form-control" required="required" [(ngModel)]="newGoal.description"
           name="description" #description="ngModel"></textarea>
-        Should display live input here: {{newGoal.description}}
+        <!-- 
+          Should display live input here: {{newGoal.description}}
+        -->
         <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
           <p>Description is required</p>
         </div>
@@ -58,7 +62,10 @@
         <!-- Date form -->
         <label for="complete">Completion</label>
         <input type="date" class="form-control" id="completeDate" required="required" [(ngModel)]="newGoal.completeDate" name="completeDate"
-          #completeDate="ngModel"> Should display live input here: {{newGoal.completeDate}}
+          #completeDate="ngModel">
+        <!-- 
+          Should display live input here: {{newGoal.completeDate}}
+        -->
         <div [hidden]="completeDate.valid || completeDate.pristine" class="alert alert-danger">
           <p>Complete date is required</p>
         </div>

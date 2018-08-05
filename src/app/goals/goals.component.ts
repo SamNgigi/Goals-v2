@@ -25,6 +25,24 @@ export class GoalsComponent implements OnInit {
     new Goal(5, "Test", "This is just testing Event Emitting and Output binding.", new Date(2018, 10, 5)),
   ]
 
+
+  /* 
+  
+  
+  */
+
+  addNewGoal(goal) {
+    // Giving our new goal the appropriate id.
+    let goalsLength = this.goals.length;
+    goal.id = goalsLength + 1;
+
+    // Setting number of day to complete the goal.
+    goal.completeDate = new Date(goal.completeDate);
+
+    // Adding our new goal to the goal array.
+    this.goals.push(goal)
+  }
+
   /* 
     The completeGoal function. Note that it receives the isComplete which is an instance of the EventEmitter class.
 
@@ -33,7 +51,7 @@ export class GoalsComponent implements OnInit {
   deleteGoal(isComplete, index) {
     // If true
     if (isComplete) {
-      let confirmDelete = confirm(`Are you sure you want to delete ${this.goals[index].name} goal.`)
+      let confirmDelete = confirm(`Are you sure you want to delete ${this.goals[index].goal} goal.`)
 
       if (confirmDelete) {
         // Remove the item with this index from the goal array.

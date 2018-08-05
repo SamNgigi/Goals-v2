@@ -3,7 +3,12 @@
 
 <div class="container">
   <div class="row">
-    <app-goal-form></app-goal-form>
+    <!--
+      We update the goal-form component and add the addGoal event
+      that triggers the addNewGoal function passing in the new goal that
+      was emitted.
+    -->
+    <app-goal-form (addGoal)="addNewGoal($event)"></app-goal-form>
   </div>
 </div>
 
@@ -40,7 +45,7 @@
       We can also chain pipes. In this case we chain the completeDate
       property with the uppercase pipe.
     -->
-      <h4 id="{{i}}" appStrikeThrough>{{goal.id}}. {{goal.name}} - Due {{goal.completeDate | date | uppercase}}</h4>
+      <h4 id="{{i}}" appStrikeThrough>{{goal.id}}. {{goal.goal}} - Due {{goal.completeDate | date | uppercase}}</h4>
 
       <!--
       Below we create a button where by if we click it we want it
