@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 // We import the Goal class from Goal.ts
 import { Goal } from "../Goal";
+/* 
+  We import the Goals_Array 
+*/
+import { Goals_Array } from "../Goals_Array";
 
 @Component({
   selector: 'app-goals',
@@ -11,25 +15,9 @@ export class GoalsComponent implements OnInit {
 
   // today = "testing";
 
-  /* 
-    Creating instances of the Goal class and stored them in the
-    goals array.
+  // We assign the our imported Goals_Array to the goals property
 
-    Note that the date object created with months starting from 0. i.e January = 0, December = 11 
-  */
-  goals = [
-    new Goal(1, "Identify skills to be mastered.", "Well for now its music, math and programming.", new Date(2018, 6, 31)),
-    new Goal(2, "Mastery of skills.", "Not yet but getting there.", new Date(2018, 8, 8)),
-    new Goal(3, "Application of skills.", "I'll be applying while still getting better.", new Date(2018, 8, 15)),
-    new Goal(4, "World domination.", "One day at a time.", new Date(2018, 9, 14)),
-    new Goal(5, "Test", "This is just testing Event Emitting and Output binding.", new Date(2018, 10, 5)),
-  ]
-
-
-  /* 
-  
-  
-  */
+  goals = Goals_Array
 
   addNewGoal(goal) {
     // Giving our new goal the appropriate id.
