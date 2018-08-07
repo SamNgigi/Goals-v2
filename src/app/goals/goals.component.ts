@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // We import the Goal class from Goal.ts
 import { Goal } from "../Goal";
+// We import the Quote class from Quote.ts
+import { Quote } from "../Quote-class/Quote"
 /* 
   We import the Goals_Array 
 */
@@ -14,6 +16,7 @@ import { GoalService } from "./goal.service";
   to register it again in our @Component providers array.
 */
 import { AlertsService } from "../alert-service/alerts.service";
+import { HttpClient } from '@angular/common/http';
 /* 
   We can think of @Component as a TypeDecorator that marks a class a
   and Angular component and add meta-data about the component.
@@ -39,6 +42,9 @@ export class GoalsComponent implements OnInit {
 
   // Here we updated the goal property and give it a type.
   goals: Goal[];
+
+  // We declare our quote property of type Quote.
+  quote: Quote;
 
   /* 
     We declare our testVarName property and type here because we will use it in our deleteGoal method.
@@ -98,9 +104,12 @@ export class GoalsComponent implements OnInit {
     The constructor is run/executes before the ngOnInit is run.
 
     We now inject our constructor with our GoalService.
-    We then also inject the AlertsService
+
+    We then also inject the AlertsService.
+
+    To allow for our component to communicate with the quote api we use inject the HttpClient to our constructor.
   */
-  constructor(goalService: GoalService, alertService: AlertsService) {
+  constructor(goalService: GoalService, alertService: AlertsService, private http: HttpClient) {
     // console.log("We are at the constructor.");
     /* 
       We call the getGoals method which returns our Goals_Array which we assign to our goals property.
@@ -120,7 +129,15 @@ export class GoalsComponent implements OnInit {
     So you can literally  take it to mean on initialization of a Angular component.
     */
   ngOnInit() {
-    console.log("We are at the ngOnInit stage.");
+    // console.log("We are at the ngOnInit stage.");
+    /* 
+      Note that the "http" in this.http.get is the property that we
+      assigned to HttpClient when injecting to the constructor.
+    */
+    this.http.get("https://talaikis.com/api/quotes/random/").subscribe(data => {
+      // We log the data returned from api call if successful.
+      console.log(data);
+    })
   }
 
 }
