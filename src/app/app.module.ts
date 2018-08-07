@@ -18,10 +18,21 @@ import { RouterModule, Routes } from "@angular/router";
   The routes array determines how we navigate through our project.
 
   Each route maps the path to the component it is to display.
+
+  We can create a routing module to handle all routing functionality.
+
+  This is a design choice to minimize complexity as our app grows
+  larger.
 */
 const routes: Routes = [
   { path: "goals", component: GoalsComponent },
-  { path: "about", component: AboutComponent }
+  { path: "about", component: AboutComponent },
+  { path: "", redirectTo: "/goals", pathMatch: "full" },
+  /* 
+    We use the ** to describe a wildcard route. This means any
+    undefined path/route.
+  */
+  { path: "**", component: FourOFourComponent }
 ]
 
 // Components
@@ -36,6 +47,7 @@ import { DateCountPipe } from './date-count.pipe';
 import { AlertsService } from './alert-service/alerts.service';
 import { QuoteApiCallComponent } from './quote-api-call/quote-api-call.component';
 import { AboutComponent } from './about/about.component';
+import { FourOFourComponent } from './four-o-four/four-o-four.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +58,8 @@ import { AboutComponent } from './about/about.component';
     DateCountPipe,
     GoalFormComponent,
     QuoteApiCallComponent,
-    AboutComponent
+    AboutComponent,
+    FourOFourComponent
   ],
   imports: [
     BrowserModule,
