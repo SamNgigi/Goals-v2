@@ -11,6 +11,7 @@ import { GoalFormComponent } from './goal-form/goal-form.component';
 import { StrikeThroughDirective } from './StrikeThrough.directive';
 // Pipe
 import { DateCountPipe } from './date-count.pipe';
+import { AlertsService } from './alert-service/alerts.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DateCountPipe } from './date-count.pipe';
     // We add the Form module to the import array.
     FormsModule
   ],
-  providers: [],
+  // Registering our AlertsService app wide.
+  providers: [AlertsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

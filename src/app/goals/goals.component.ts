@@ -5,8 +5,15 @@ import { Goal } from "../Goal";
   We import the Goals_Array 
 */
 import { Goals_Array } from "../Goals_Array";
-// We import our service
+// We import our GoalService
 import { GoalService } from "./goal.service";
+/* 
+  We import the AlertsService.
+
+  Because we registered this service in app.module.ts, we do not need
+  to register it again in our @Component providers array.
+*/
+import { AlertsService } from "../alert-service/alerts.service";
 /* 
   We can think of @Component as a TypeDecorator that marks a class a
   and Angular component and add meta-data about the component.
@@ -33,6 +40,11 @@ export class GoalsComponent implements OnInit {
   // Here we updated the goal property and give it a type.
   goals: Goal[];
 
+  /* 
+    We declare our alertService property and type here because we will use it in our deleteGoal method.
+  */
+  alertService: AlertsService;
+
   addNewGoal(goal) {
     // Giving our new goal the appropriate id.
     let goalsLength = this.goals.length;
@@ -53,11 +65,13 @@ export class GoalsComponent implements OnInit {
   deleteGoal(isComplete, index) {
     // If true
     if (isComplete) {
-      let confirmDelete = confirm(`Are you sure you want to delete ${this.goals[index].goal} goal.`)
+      let confirmDelete = confirm(`Are you sure you want to delete ${this.goals[index].goal} goal.`);
 
       if (confirmDelete) {
         // Remove the item with this index from the goal array.
-        this.goals.splice(index, 1)
+        this.goals.splice(index, 1);
+        // Calling our AlertService method alertMe().
+        this.alertService.alertMe("Goal has been deleted");
       }
     }
   }
@@ -80,14 +94,17 @@ export class GoalsComponent implements OnInit {
 
     The constructor is run/executes before the ngOnInit is run.
 
-    We now inject our constructor with our service
+    We now inject our constructor with our GoalService.
+    We then also inject the AlertsService
   */
-  constructor(goalService: GoalService) {
+  constructor(goalService: GoalService, alertService: AlertsService) {
     // console.log("We are at the constructor.");
     /* 
       We call the getGoals method which returns our Goals_Array which we assign to our goals property.
     */
-    this.goals = goalService.getGoals()
+    this.goals = goalService.getGoals();
+    // Making the service available to the whole class.
+    this.alertService = alertService;
   }
 
   /* 
