@@ -4,6 +4,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 // We import the HttpClientModule
 import { HttpClientModule } from "@angular/common/http";
+/* 
+  We import the progress bar and the http progress bar that will automatically create a progress bar when the HttpClient is called.
+*/
+import { NgProgressModule } from "@ngx-progressbar/core";
+import { NgProgressHttpModule } from "@ngx-progressbar/http";
+
+
 // Components
 import { AppComponent } from './app.component';
 import { GoalsComponent } from './goals/goals.component';
@@ -30,8 +37,12 @@ import { QuoteApiCallComponent } from './quote-api-call/quote-api-call.component
     BrowserModule,
     // We add the Form module to the import array.
     FormsModule,
-    // We add the HttpClientModule here too.
-    HttpClientModule
+    // We add the HttpClientModule.
+    HttpClientModule,
+    // We add the Normal progress bar.
+    NgProgressModule.forRoot(),
+    // We add the progress bar that is triggered on http requests
+    NgProgressHttpModule
   ],
   // Registering our AlertsService app wide.
   providers: [AlertsService],
