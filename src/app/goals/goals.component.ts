@@ -17,6 +17,7 @@ import { GoalService } from "./goal.service";
 */
 import { AlertsService } from "../alert-service/alerts.service";
 import { HttpClient } from '@angular/common/http';
+import { log } from 'util';
 /* 
   We can think of @Component as a TypeDecorator that marks a class a
   and Angular component and add meta-data about the component.
@@ -109,7 +110,11 @@ export class GoalsComponent implements OnInit {
 
     To allow for our component to communicate with the quote api we use inject the HttpClient to our constructor.
   */
-  constructor(goalService: GoalService, alertService: AlertsService, private http: HttpClient) {
+  constructor(
+    goalService: GoalService,
+    alertService: AlertsService,
+    private http: HttpClient
+  ) {
     // console.log("We are at the constructor.");
     /* 
       We call the getGoals method which returns our Goals_Array which we assign to our goals property.
@@ -165,11 +170,16 @@ export class GoalsComponent implements OnInit {
       We assign the new class instance (object) to the quote property.
 
     */
-    this.http.get<ApiResponse>("https://talaikis.com/api/quotes/random/").subscribe(data => {
-      // We log the response stored in data returned from api call if successful.
-      console.log(data);
-      this.quote = new Quote(data.quote, data.author, data.cat);
-    })
+    this.http.get<ApiResponse>("https://talaikis.com/api/quotes/random/").subscribe(
+      data => {
+        // We log the response stored in data returned from api call if successful.
+        console.log(data);
+        this.quote = new Quote(data.quote, data.author, data.cat);
+      },
+      error => {
+        this.quote = new Quote("Never, never, never, never, never give up.", "Winston Churchill", "Inspirational");
+        console.log(error);
+      });
   }
 
 }
