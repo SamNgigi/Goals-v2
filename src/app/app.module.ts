@@ -9,31 +9,9 @@ import { HttpClientModule } from "@angular/common/http";
 */
 import { NgProgressModule } from "@ngx-progressbar/core";
 import { NgProgressHttpModule } from "@ngx-progressbar/http";
-// We add the router modules
-import { RouterModule, Routes } from "@angular/router";
 
-/* 
-  Defining the routes/paths to different endpoints.
+import { RoutingStuffModule } from "./routing-stuff/routing-stuff.module";
 
-  The routes array determines how we navigate through our project.
-
-  Each route maps the path to the component it is to display.
-
-  We can create a routing module to handle all routing functionality.
-
-  This is a design choice to minimize complexity as our app grows
-  larger.
-*/
-const routes: Routes = [
-  { path: "goals", component: GoalsComponent },
-  { path: "about", component: AboutComponent },
-  { path: "", redirectTo: "/goals", pathMatch: "full" },
-  /* 
-    We use the ** to describe a wildcard route. This means any
-    undefined path/route.
-  */
-  { path: "**", component: FourOFourComponent }
-]
 
 // Components
 import { AppComponent } from './app.component';
@@ -71,8 +49,8 @@ import { FourOFourComponent } from './four-o-four/four-o-four.component';
     NgProgressModule.forRoot(),
     // We add the progress bar that is triggered on http requests
     NgProgressHttpModule,
-    // We add the RouterModule to the import array
-    RouterModule.forRoot(routes)
+    // We import RoutingStuffModule
+    RoutingStuffModule
   ],
   // Registering our AlertsService app wide.
   providers: [AlertsService],
