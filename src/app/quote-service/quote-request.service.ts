@@ -22,19 +22,30 @@ export class QuoteRequestService {
 
   quoteRequest() {
     interface ApiResponse {
-      // Describing what we want our response to look like.
+      // Describing what our response looks like.
       quote: string;
       author: string;
-      category: string;
+      /* 
+        It should be cat here not category because the api calls it
+        at not category.
+      */
+      cat: string;
+
+      /* 
+        So basically the ApiResponse interface defines like what we
+        want from an response. Where we want just some properties or
+        all the properties.
+      */
     }
 
     // We create a new instance of a Promise
     let promise = new Promise((resolve, reject) => {
       this.http.get<ApiResponse>(environment.api_url).toPromise().then(response => {
-        console.log(response);
+        // console.log(response);
         this.quote.quote = response.quote;
         this.quote.author = response.author;
-        this.quote.category = response.category;
+        // Should be response.cat not response.category
+        this.quote.category = response.cat;
 
         resolve();
       },

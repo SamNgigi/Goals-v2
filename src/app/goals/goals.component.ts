@@ -122,6 +122,8 @@ export class GoalsComponent implements OnInit {
     this.goals = goalService.getGoals();
     // Making the service available to the whole class.
     this.testVarName = alertService;
+
+    console.log(this.quote)
   }
 
   /* 
@@ -136,6 +138,7 @@ export class GoalsComponent implements OnInit {
   ngOnInit() {
     this.quoteRequestService.quoteRequest();
     this.quote = this.quoteRequestService.quote;
+    console.log(this.quote)
   }
 
 }
