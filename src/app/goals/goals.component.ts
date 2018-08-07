@@ -5,19 +5,33 @@ import { Goal } from "../Goal";
   We import the Goals_Array 
 */
 import { Goals_Array } from "../Goals_Array";
+// We import our service
+import { GoalService } from "./goal.service";
+/* 
+  We can think of @Component as a TypeDecorator that marks a class a
+  and Angular component and add meta-data about the component.
 
+  Not how it is called just above the GoalComponent class.
+*/
 @Component({
   selector: 'app-goals',
   templateUrl: './goals.component.html',
-  styleUrls: ['./goals.component.css']
+  styleUrls: ['./goals.component.css'],
+  /* 
+    We add a providers array to our component and register our
+    service/injector.
+
+    This is a case of local dependency injection whereby GoalService is just to be used/injected/available within the GoalComponent
+    only.
+  */
+  providers: [GoalService]
 })
 export class GoalsComponent implements OnInit {
 
   // today = "testing";
 
-  // We assign the our imported Goals_Array to the goals property
-
-  goals = Goals_Array
+  // Here we updated the goal property and give it a type.
+  goals: Goal[];
 
   addNewGoal(goal) {
     // Giving our new goal the appropriate id.
@@ -64,11 +78,16 @@ export class GoalsComponent implements OnInit {
   /* 
     A constructor is a special method which is used in the defining of new objects(classes). It is used to define the blueprint that instantiates object instances. 
 
-    The constructor is run before the ngOnInit is run.
-  */
+    The constructor is run/executes before the ngOnInit is run.
 
-  constructor() {
-    console.log("We are at the constructor.");
+    We now inject our constructor with our service
+  */
+  constructor(goalService: GoalService) {
+    // console.log("We are at the constructor.");
+    /* 
+      We call the getGoals method which returns our Goals_Array which we assign to our goals property.
+    */
+    this.goals = goalService.getGoals()
   }
 
   /* 
