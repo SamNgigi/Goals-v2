@@ -16,8 +16,8 @@ import { GoalService } from "./goal.service";
   to register it again in our @Component providers array.
 */
 import { AlertsService } from "../alert-service/alerts.service";
-import { HttpClient } from '@angular/common/http';
-import { log } from 'util';
+// We import the quote request service
+import { QuoteRequestService } from "../quote-service/quote-request.service";
 /* 
   We can think of @Component as a TypeDecorator that marks a class a
   and Angular component and add meta-data about the component.
@@ -35,7 +35,7 @@ import { log } from 'util';
     This is a case of local dependency injection whereby GoalService is just to be used/injected/available within the GoalComponent
     only.
   */
-  providers: [GoalService]
+  providers: [GoalService, QuoteRequestService]
 })
 export class GoalsComponent implements OnInit {
 
@@ -113,7 +113,7 @@ export class GoalsComponent implements OnInit {
   constructor(
     goalService: GoalService,
     alertService: AlertsService,
-    private http: HttpClient
+    private quoteRequestService: QuoteRequestService
   ) {
     // console.log("We are at the constructor.");
     /* 
@@ -134,52 +134,8 @@ export class GoalsComponent implements OnInit {
     So you can literally  take it to mean on initialization of a Angular component.
     */
   ngOnInit() {
-    // console.log("We are at the ngOnInit stage.");
-
-    /* 
-      So when an api is successful the HttpClient module converts the response into an
-      object but does not specify that type of object it is.
-
-      We tell the HttpClient what type of objects we are expecting by defining an interface.
-
-      In this case we define an interface called ApiResponse and describe the properties
-      that we need from the response.
-    */
-
-    interface ApiResponse {
-      quote: string;
-      author: string;
-      cat: string;
-    }
-    /* 
-      We then pass the interface with the get Method
-
-      Note that the "http" in this.http.get is the property that we
-      assigned to HttpClient when injecting to the constructor.
-
-      So here we are basically we want to get a response from our api call.
-
-      We call the subscribe function that takes in the data function that is called when
-      the API request is successful and returns a response.
-
-      Note: the data function can be called anything.
-
-      We create a new instance of the Quote class and pass in the properties from the
-      response as defined by our interface.
-      
-      We assign the new class instance (object) to the quote property.
-
-    */
-    this.http.get<ApiResponse>("https://talaikis.com/api/quotes/random/").subscribe(
-      data => {
-        // We log the response stored in data returned from api call if successful.
-        console.log(data);
-        this.quote = new Quote(data.quote, data.author, data.cat);
-      },
-      error => {
-        this.quote = new Quote("Never, never, never, never, never give up.", "Winston Churchill", "Inspirational");
-        console.log(error);
-      });
+    this.quoteRequestService.quoteRequest();
+    this.quote = this.quoteRequestService.quote;
   }
 
 }
