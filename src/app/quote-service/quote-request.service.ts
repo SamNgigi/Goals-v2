@@ -59,6 +59,7 @@ export class QuoteRequestService {
     });
 
     return promise
+    // console.log(promise);// Not returning anything.
   }
 
 }
