@@ -41,9 +41,9 @@ export class GoalsComponent implements OnInit {
   goals: Goal[];
 
   /* 
-    We declare our alertService property and type here because we will use it in our deleteGoal method.
+    We declare our testVarName property and type here because we will use it in our deleteGoal method.
   */
-  alertService: AlertsService;
+  testVarName: AlertsService;
 
   addNewGoal(goal) {
     // Giving our new goal the appropriate id.
@@ -70,8 +70,11 @@ export class GoalsComponent implements OnInit {
       if (confirmDelete) {
         // Remove the item with this index from the goal array.
         this.goals.splice(index, 1);
-        // Calling our AlertService method alertMe().
-        this.alertService.alertMe("Goal has been deleted");
+        /* 
+          Calling our AlertService method alertMe() that was assigned
+          to the testVarName property.
+        */
+        this.testVarName.alertMe("Goal has been deleted");
       }
     }
   }
@@ -104,7 +107,7 @@ export class GoalsComponent implements OnInit {
     */
     this.goals = goalService.getGoals();
     // Making the service available to the whole class.
-    this.alertService = alertService;
+    this.testVarName = alertService;
   }
 
   /* 
