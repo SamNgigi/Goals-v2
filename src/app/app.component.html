@@ -1,1 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning mb-4">
+  <a class="navbar-brand" routerLink="goals" routerLinkActive="active">Goals App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <!-- 
+
+          routerLink 
+           - is an attribute directive to the anchor tags that take in a string that is the url to the routes we created in the routes array.
+          
+          routerLinkActive
+            - another directive that toggles the CSS classes by
+            checking on the state of the routerLink using the routeState.
+
+          A given routerLink will only be active if its URL is an
+          exact match to the current URL.
+         -->
+        <a class="nav-link" routerLink="/goals" routerLinkActive="active">Goals
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!-- 
+  Adding the Router Outlet 
+  The router-outlet is a directive provided by the router library. It
+  marks the are where the router should display the different view it
+  loads.
+-->
+<router-outlet></router-outlet>
+<!-- Adding the Goal Component -->
 <app-goals></app-goals>

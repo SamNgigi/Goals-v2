@@ -9,7 +9,20 @@ import { HttpClientModule } from "@angular/common/http";
 */
 import { NgProgressModule } from "@ngx-progressbar/core";
 import { NgProgressHttpModule } from "@ngx-progressbar/http";
+// We add the router modules
+import { RouterModule, Routes } from "@angular/router";
 
+/* 
+  Defining the routes/paths to different endpoints.
+
+  The routes array determines how we navigate through our project.
+
+  Each route maps the path to the component it is to display.
+*/
+const routes: Routes = [
+  { path: "goals", component: GoalsComponent },
+  { path: "about", component: AboutComponent }
+]
 
 // Components
 import { AppComponent } from './app.component';
@@ -22,6 +35,7 @@ import { StrikeThroughDirective } from './StrikeThrough.directive';
 import { DateCountPipe } from './date-count.pipe';
 import { AlertsService } from './alert-service/alerts.service';
 import { QuoteApiCallComponent } from './quote-api-call/quote-api-call.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +45,8 @@ import { QuoteApiCallComponent } from './quote-api-call/quote-api-call.component
     StrikeThroughDirective,
     DateCountPipe,
     GoalFormComponent,
-    QuoteApiCallComponent
+    QuoteApiCallComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +57,9 @@ import { QuoteApiCallComponent } from './quote-api-call/quote-api-call.component
     // We add the Normal progress bar.
     NgProgressModule.forRoot(),
     // We add the progress bar that is triggered on http requests
-    NgProgressHttpModule
+    NgProgressHttpModule,
+    // We add the RouterModule to the import array
+    RouterModule.forRoot(routes)
   ],
   // Registering our AlertsService app wide.
   providers: [AlertsService],
