@@ -130,13 +130,45 @@ export class GoalsComponent implements OnInit {
     */
   ngOnInit() {
     // console.log("We are at the ngOnInit stage.");
+
     /* 
+      So when an api is successful the HttpClient module converts the response into an
+      object but does not specify that type of object it is.
+
+      We tell the HttpClient what type of objects we are expecting by defining an interface.
+
+      In this case we define an interface called ApiResponse and describe the properties
+      that we need from the response.
+    */
+
+    interface ApiResponse {
+      quote: string;
+      author: string;
+      cat: string;
+    }
+    /* 
+      We then pass the interface with the get Method
+
       Note that the "http" in this.http.get is the property that we
       assigned to HttpClient when injecting to the constructor.
+
+      So here we are basically we want to get a response from our api call.
+
+      We call the subscribe function that takes in the data function that is called when
+      the API request is successful and returns a response.
+
+      Note: the data function can be called anything.
+
+      We create a new instance of the Quote class and pass in the properties from the
+      response as defined by our interface.
+      
+      We assign the new class instance (object) to the quote property.
+
     */
-    this.http.get("https://talaikis.com/api/quotes/random/").subscribe(data => {
-      // We log the data returned from api call if successful.
+    this.http.get<ApiResponse>("https://talaikis.com/api/quotes/random/").subscribe(data => {
+      // We log the response stored in data returned from api call if successful.
       console.log(data);
+      this.quote = new Quote(data.quote, data.author, data.cat);
     })
   }
 
