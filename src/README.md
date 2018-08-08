@@ -39,6 +39,7 @@ For brew mac-Os user
 ```
 
 **Next**
+
 Download Node Version Manager (`nvm`) to download and manage your node version. Click [here](https://nodesource.com/blog/installing-node-js-tutorial-using-nvm-on-mac-os-x-and-ubuntu/) for nvm installation details.
 
 Note that `nvm use` allows you to use and install version for example
