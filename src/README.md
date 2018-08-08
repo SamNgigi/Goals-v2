@@ -2,25 +2,59 @@
 
 ## Installation
 
-It would seem that Angular CLI: 6.1.1 has an issue and it is advised to work with @angular/cli@6.1.0-rc.0.
+When installing Angular first make sure that you have the correct version of node.
 
-[See here on Stackoverflow.](https://stackoverflow.com/questions/51539032/angular-cli-not-installed-properly)
+Make sure to remove all previous versions of node and npm that you have in your system and instead use nvm to manage your the node downloads and installation.
 
-## Week1 Wednesday: Deleting Goals
+Here is how to completely remove node, nodejs, node_modules and npm from your system. Make sure to follow it thoroughly.
 
-Code highlighting `goalDelete`.
+```
+  sudo apt-get remove nodejs
 
-## Week1 Wednesday: NgModel
+  sudo apt-get remove npm
+```
 
-### *Two way data binding*
+**Then**
 
-Correct _two data binding_ to  _*two way data-binding*_.
+```
+  sudo rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node* /usr/local/lib/dtrace/node.d ~/.npm ~/.node-gyp /opt/local/bin/node /opt/local/include/node /opt/local/lib/node_modules 
 
-## Week1 Wednesday: Submit Form
+  sudo rm -rf /usr/local/lib/node*
 
-### *Submitting forms using ngSubmit*
+  sudo rm -rf /usr/local/include/node*
 
-*addNewGoal class* should be **addNewGoal function**
+  sudo rm -rf /usr/local/bin/node*
+```
+
+Also make sure you go to your **Home** directory and **remove** all `node`, `.node `or `.npm` folders. Also be sure to remove any `package.json`.
+
+For brew mac-Os user
+
+```
+  brew uninstall node; 
+  # or `brew uninstall --force node` which removes all versions
+  brew prune;
+  rm -f /usr/local/bin/npm /usr/local/lib/dtrace/node.d;
+  rm -rf ~/.npm;
+```
+
+**Next**
+Download Node Version Manager (`nvm`) to download and manage your node version. Click [here](https://nodesource.com/blog/installing-node-js-tutorial-using-nvm-on-mac-os-x-and-ubuntu/) for nvm installation details.
+
+Note that `nvm use` allows you to use and install version for example
+
+```
+  nvm use node  
+```
+to use latest version of node.
+
+```
+  nvm use --lts  
+```
+to use the long term support (lts) version of node.
+
+For a list of nvm command just type `nvm --help`.
+
 
 ## Week1 Wednesday: Deployment
 
