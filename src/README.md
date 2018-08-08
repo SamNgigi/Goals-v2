@@ -42,7 +42,9 @@ For brew mac-Os user
 
 Download Node Version Manager (`nvm`) to download and manage your node version. Click [here](https://nodesource.com/blog/installing-node-js-tutorial-using-nvm-on-mac-os-x-and-ubuntu/) for nvm installation details.
 
-Note that `nvm use` allows you to use an installed version. For example,
+Note that you should close the terminal once nvm is installed or source it as specified after it is installed. When you open the terminal again nvm will be available for use. 
+
+`nvm use` allows you to use an installed version. For example,
 
 ```
   nvm use node  
