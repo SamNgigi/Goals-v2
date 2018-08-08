@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // We import the Goal class from Goal.ts
 import { Goal } from "../Goal";
-// We import the Quote class from Quote.ts
-import { Quote } from "../Quote-class/Quote"
 /* 
   We import the Goals_Array 
 */
@@ -16,9 +14,7 @@ import { GoalService } from "../goal-service/goal.service";
   to register it again in our @Component providers array.
 */
 import { AlertsService } from "../alert-service/alerts.service";
-// We import the quote request service
-import { QuoteRequestService } from "../quote-service/quote-request.service";
-
+// We import Router from router in-order to use the navigate method.
 import { Router } from "@angular/router";
 
 /* 
@@ -39,7 +35,7 @@ import { Router } from "@angular/router";
     This is a case of local dependency injection whereby GoalService is just to be used/injected/available within the GoalComponent
     only.
   */
-  providers: [GoalService, QuoteRequestService]
+  providers: [GoalService]
 })
 export class GoalsComponent implements OnInit {
 
@@ -47,9 +43,6 @@ export class GoalsComponent implements OnInit {
 
   // Here we updated the goal property and give it a type.
   goals: Goal[];
-
-  // We declare our quote property of type Quote.
-  quote: Quote;
 
   /* 
     We declare our testVarName property and type here because we will use it in our deleteGoal method.
@@ -118,7 +111,6 @@ export class GoalsComponent implements OnInit {
   constructor(
     goalService: GoalService,
     alertService: AlertsService,
-    private quoteRequestService: QuoteRequestService,
     private router: Router
   ) {
     // console.log("We are at the constructor.");
@@ -128,8 +120,6 @@ export class GoalsComponent implements OnInit {
     this.goals = goalService.getGoals();
     // Making the service available to the whole class.
     this.testVarName = alertService;
-
-    console.log(this.quote)
   }
 
   /* 
@@ -142,9 +132,7 @@ export class GoalsComponent implements OnInit {
     So you can literally  take it to mean on initialization of a Angular component.
     */
   ngOnInit() {
-    this.quoteRequestService.quoteRequest();
-    this.quote = this.quoteRequestService.quote;
-    console.log(this.quote)
+
   }
 
 }
