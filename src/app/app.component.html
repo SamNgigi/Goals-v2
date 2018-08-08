@@ -30,17 +30,15 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
-          Dropdown
+          Knock, Knock
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Who's there?</a>
+          <a class="dropdown-item" href="#">Ya.</a>
+          <a class="dropdown-item" href="#">Ya who?</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">No. Google</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -54,7 +52,19 @@
   The router-outlet is a directive provided by the router library. It
   marks the are where the router should display the different view it
   loads.
+
+  So now all our components will be nested inside the router-outlet.
+  Meaning that no longer have to nest or pass in other components
+  because the will all be in the router module.
+
+  And the router-outlet html tag will allow us to access all other
+  components by the path defined with then in our RouterModule.
+
+ That is why we comment out our previous
+<app-goals></app-goals>
 -->
 <router-outlet></router-outlet>
-<!-- Adding the Goal Component -->
-<app-goals></app-goals>
+<!-- Adding the Goal Component 
+
+  <app-goals></app-goals>
+-->

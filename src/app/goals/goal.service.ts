@@ -36,6 +36,7 @@ export class GoalService {
   getSpecificGoal(id) {
     for (let goal of Goals_Array) {
       if (goal.id == id) {
+        console.log(goal);
         return goal;
       }
     }

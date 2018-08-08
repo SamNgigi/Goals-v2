@@ -18,6 +18,8 @@ import { GoalService } from "../goals/goal.service";
   providers: [GoalService]
 })
 export class GoalDetailsComponent implements OnInit {
+
+  paramMap: ParamMap;
   /* 
     We use the Input decorator that allows us to access the
     properties within the parent component.
@@ -26,7 +28,7 @@ export class GoalDetailsComponent implements OnInit {
     class type.
 
     Now all that remains is to display the description here in the goal-details html.
-  */
+    */
   @Input() goal: Goal;
 
   /* 

@@ -1,4 +1,3 @@
-import { Router } from "@angular/router";
 import { Component, OnInit } from '@angular/core';
 // We import the Goal class from Goal.ts
 import { Goal } from "../Goal";
@@ -19,13 +18,15 @@ import { GoalService } from "./goal.service";
 import { AlertsService } from "../alert-service/alerts.service";
 // We import the quote request service
 import { QuoteRequestService } from "../quote-service/quote-request.service";
+
+import { Router } from "@angular/router";
+
 /* 
   We can think of @Component as a TypeDecorator that marks a class a
   and Angular component and add meta-data about the component.
 
   Not how it is called just above the GoalComponent class.
 */
-
 
 @Component({
   selector: 'app-goals',
@@ -74,8 +75,10 @@ export class GoalsComponent implements OnInit {
       On the router we injected we call the navigate method that
       takes in an array as an argument where the first item is the
       path and the second item is the id of the goal.
+
+      Be careful to make sure that you name this path specifically goals. This is because it matches with the /goals path in the router module and in the navbar /goals routerLink. 
     */
-    this.router.navigate(["/goals", id])
+    this.router.navigate(["/goals", id]);
   }
 
   /* 
@@ -83,35 +86,21 @@ export class GoalsComponent implements OnInit {
 
     Below we replaced completeGoal with deleteGoal.
   */
-  deleteGoal(isComplete, index) {
-    // If true
-    if (isComplete) {
-      let confirmDelete = confirm(`Are you sure you want to delete ${this.goals[index].goal} goal.`);
+  deleteGoal(index) {
 
-      if (confirmDelete) {
-        // Remove the item with this index from the goal array.
-        this.goals.splice(index, 1);
-        /* 
-          Calling our AlertService method alertMe() that was assigned
-          to the testVarName property.
-        */
-        this.testVarName.alertMe("Goal has been deleted");
-      }
+    let confirmDelete = confirm(`Are you sure you want to delete ${this.goals[index].goal} goal.`);
+
+    if (confirmDelete) {
+      // Remove the item with this index from the goal array.
+      this.goals.splice(index, 1);
+      /* 
+        Calling our AlertService method alertMe() that was assigned
+        to the testVarName property.
+      */
+      this.testVarName.alertMe("Goal has been deleted");
     }
+
   }
-
-
-  // The toggleDetails function.
-
-  toggleDetails(index) {
-    /* 
-      Cont from goal.component.html
-
-      Here then we are actually toggling between checking if it is true that it is false to is it false that it is false.
-    */
-    this.goals[index].showDescription = !this.goals[index].showDescription;
-  }
-
 
   /* 
     A constructor is a special method which is used in the defining of new objects(classes). It is used to define the blueprint that instantiates object instances. 

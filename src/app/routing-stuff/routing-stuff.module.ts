@@ -34,8 +34,9 @@ const routes: Routes = [
     We will then insert an id of the goal to retrieve that specific goal.
 
     We will need to make some changes to our templates.
+    A
   */
-  { path: "goal/:id", component: GoalDetailsComponent },
+  { path: "goals/:id", component: GoalDetailsComponent },
   { path: "**", component: FourOFourComponent }
 ]
 
