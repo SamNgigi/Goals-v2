@@ -6,11 +6,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 // Import our class definition of a goal.
 import { Goal } from "../Goal";
+// We import the ActivatedRoute and ParamMap
+import { ActivatedRoute, ParamMap } from "@angular/router";
+// We import the Goal Service
+import { GoalService } from "../goals/goal.service";
 
 @Component({
   selector: 'app-goal-details',
   templateUrl: './goal-details.component.html',
-  styleUrls: ['./goal-details.component.css']
+  styleUrls: ['./goal-details.component.css'],
+  providers: [GoalService]
 })
 export class GoalDetailsComponent implements OnInit {
   /* 
@@ -44,9 +49,11 @@ export class GoalDetailsComponent implements OnInit {
     this.isComplete.emit(complete);
   }
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private goalService: GoalService) { }
 
   ngOnInit() {
+    let id = this.route.snapshot.paramMap.get("id");
+    this.goal = this.goalService.getSpecificGoal(id);
   }
 
 }

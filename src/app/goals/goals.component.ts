@@ -1,3 +1,4 @@
+import { Router } from "@angular/router";
 import { Component, OnInit } from '@angular/core';
 // We import the Goal class from Goal.ts
 import { Goal } from "../Goal";
@@ -24,6 +25,8 @@ import { QuoteRequestService } from "../quote-service/quote-request.service";
 
   Not how it is called just above the GoalComponent class.
 */
+
+
 @Component({
   selector: 'app-goals',
   templateUrl: './goals.component.html',
@@ -62,6 +65,17 @@ export class GoalsComponent implements OnInit {
 
     // Adding our new goal to the goal array.
     this.goals.push(goal)
+  }
+
+  // Going to view a specific goals
+
+  goToUrl(id) {
+    /* 
+      On the router we injected we call the navigate method that
+      takes in an array as an argument where the first item is the
+      path and the second item is the id of the goal.
+    */
+    this.router.navigate(["/goals", id])
   }
 
   /* 
@@ -109,11 +123,14 @@ export class GoalsComponent implements OnInit {
     We then also inject the AlertsService.
 
     To allow for our component to communicate with the quote api we use inject the HttpClient to our constructor.
+
+    We update our constructor and inject our router of type router.
   */
   constructor(
     goalService: GoalService,
     alertService: AlertsService,
-    private quoteRequestService: QuoteRequestService
+    private quoteRequestService: QuoteRequestService,
+    private router: Router
   ) {
     // console.log("We are at the constructor.");
     /* 

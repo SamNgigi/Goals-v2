@@ -6,6 +6,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { GoalsComponent } from "../goals/goals.component";
 import { AboutComponent } from "../about/about.component";
 import { FourOFourComponent } from "../four-o-four/four-o-four.component";
+import { GoalDetailsComponent } from '../goal-details/goal-details.component';
 
 
 /* 
@@ -24,6 +25,17 @@ const routes: Routes = [
   { path: "goals", component: GoalsComponent },
   { path: "about", component: AboutComponent },
   { path: "", redirectTo: "/goals", pathMatch: "full" },
+  /* 
+    We can actually define a route to a specific goal using the
+    syntax below.
+
+    We create a new route that has an :id token in the path allowing a slot for a route id parameter.
+
+    We will then insert an id of the goal to retrieve that specific goal.
+
+    We will need to make some changes to our templates.
+  */
+  { path: "goal/:id", component: GoalDetailsComponent },
   { path: "**", component: FourOFourComponent }
 ]
 

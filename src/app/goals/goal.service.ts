@@ -30,6 +30,17 @@ export class GoalService {
     return Goals_Array;
   }
 
+  /* 
+    We create the getSpecificGoal method that return the goal we clicked on.
+  */
+  getSpecificGoal(id) {
+    for (let goal of Goals_Array) {
+      if (goal.id == id) {
+        return goal;
+      }
+    }
+  }
+
   constructor() { }
 }
 
