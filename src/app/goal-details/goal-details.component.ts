@@ -9,7 +9,7 @@ import { Goal } from "../Goal";
 // We import the ActivatedRoute and ParamMap
 import { ActivatedRoute, ParamMap } from "@angular/router";
 // We import the Goal Service
-import { GoalService } from "../goals/goal.service";
+import { GoalService } from "../goal-service/goal.service";
 
 @Component({
   selector: 'app-goal-details',

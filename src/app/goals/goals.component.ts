@@ -8,7 +8,7 @@ import { Quote } from "../Quote-class/Quote"
 */
 import { Goals_Array } from "../Goals_Array";
 // We import our GoalService
-import { GoalService } from "./goal.service";
+import { GoalService } from "../goal-service/goal.service";
 /* 
   We import the AlertsService.
 
