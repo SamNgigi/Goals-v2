@@ -8,7 +8,7 @@ Make sure to remove all previous versions of node and npm that you have in your 
 
 Here is how to completely remove node, nodejs, node_modules and npm from your system. Make sure to follow it thoroughly.
 
-```
+```bash
   sudo apt-get remove nodejs
 
   sudo apt-get remove npm
@@ -16,7 +16,7 @@ Here is how to completely remove node, nodejs, node_modules and npm from your sy
 
 **Then**
 
-```
+```bash
   sudo rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node* /usr/local/lib/dtrace/node.d ~/.npm ~/.node-gyp /opt/local/bin/node /opt/local/include/node /opt/local/lib/node_modules 
 
   sudo rm -rf /usr/local/lib/node*
@@ -26,11 +26,11 @@ Here is how to completely remove node, nodejs, node_modules and npm from your sy
   sudo rm -rf /usr/local/bin/node*
 ```
 
-Also make sure you go to your **Home** directory and **remove** all `node`, `.node `or `.npm` folders. Also be sure to remove any `package.json`.
+Also make sure you go to your **Home** directory and **remove** all `node`, `.node` or `.npm` folders. Also be sure to remove any `package.json`.
 
 For brew mac-Os user
 
-```
+```bash
   brew uninstall node; 
   # or `brew uninstall --force node` which removes all versions
   brew prune;
@@ -46,12 +46,12 @@ Note that you should close the terminal once nvm is installed or source it as sp
 
 `nvm use` allows you to use an installed version. For example,
 
-```
+```bash
   nvm use node  
 ```
 to use latest version of node.
 
-```
+```bash
   nvm use --lts  
 ```
 to use the long term support (lts) version of node.
@@ -97,7 +97,7 @@ So we need to install these with:
 
 After go to the angular.json file and add the path to the minified jQuery, popper.js and bootstrap to the scripts array, as follows.
 
-```
+```angular.json
   "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/popper.js/dist/umd/popper.min.js",
