@@ -34,6 +34,7 @@ export class GoalFormComponent implements OnInit {
   submitGoal() {
     // alert("Working");
     this.addGoal.emit(this.newGoal);
+    // We have to set our newGoal again to empty to make us submit a form that is not bound to a previous goal.
     this.newGoal = new Goal(0, "", "", new Date());
   }
 
